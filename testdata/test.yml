@@ -1,0 +1,22 @@
+desc: hogehoge
+runners:
+  req: https://blog.arthur1.dev
+steps:
+  test1:
+    req:
+      '/':
+        get:
+          body: null
+    test: steps.test1.res.status == 200
+  test2:
+    req:
+      '/test':
+        get:
+          body: null
+    #test: steps.test2.res.status == 200
+  test3:
+    req:
+      '/':
+        get:
+          body: null
+    #test: steps.test3.res.status == 200
