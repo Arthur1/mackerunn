@@ -25,7 +25,7 @@ func (r *Runner) resultToMetricValues(result *scenariotest.Result) []*mackerel.M
 			Value: btoi(result.Err == nil),
 		},
 	}
-	if result.Err != nil {
+	if result.Err == nil {
 		vs = append(vs, &mackerel.MetricValue{
 			Name:  fmt.Sprintf("mackerunn.elapsed_time.%s", key),
 			Time:  t,
