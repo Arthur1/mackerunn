@@ -58,4 +58,5 @@ func main() {
 	if err := mr.Run(ctx); err != nil {
 		log.Fatalln(err)
 	}
+	log.Println("succeeded")
 }
