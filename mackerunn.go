@@ -37,5 +37,10 @@ func (r *Runner) Run(ctx context.Context) error {
 	if err := r.exportResultAsCheckReport(res, _err); err != nil {
 		return err
 	}
-	return r.exportResultAsMetric(res)
+	if _err == nil {
+		if err := r.exportResultAsMetric(res); err != nil {
+			return err
+		}
+	}
+	return nil
 }
