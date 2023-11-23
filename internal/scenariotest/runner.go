@@ -36,18 +36,22 @@ func (r *Runner) Run(ctx context.Context) (*Result, error) {
 		return nil, err
 	}
 
-	err = o.Run(ctx)
+	_err := o.Run(ctx)
 	res := o.Result()
 
 	var (
 		buf     bytes.Buffer
 		profile stopw.Span
 	)
-	o.DumpProfile(&buf)
-	json.NewDecoder(&buf).Decode(&profile)
+	if err := o.DumpProfile(&buf); err != nil {
+		return nil, err
+	}
+	if err := json.NewDecoder(&buf).Decode(&profile); err != nil {
+		return nil, err
+	}
 
 	result := &Result{
-		Err:         err,
+		Err:         _err,
 		ElapsedTime: profile.Elapsed,
 		Description: res.Desc,
 		Timestamp:   profile.StartedAt,
