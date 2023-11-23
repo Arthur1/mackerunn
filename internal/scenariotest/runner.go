@@ -48,7 +48,7 @@ func (r *Runner) Run(ctx context.Context) (*Result, error) {
 
 	result := &Result{
 		Err:         err,
-		ElapsedTime: res.Elapsed,
+		ElapsedTime: profile.Elapsed,
 		Description: res.Desc,
 		Timestamp:   profile.StartedAt,
 	}
