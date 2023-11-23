@@ -3,6 +3,7 @@ module github.com/Arthur1/mackerunn
 go 1.21.3
 
 require (
+	github.com/go-co-op/gocron v1.36.0
 	github.com/k1LoW/runn v0.90.4
 	github.com/k1LoW/stopw v0.7.1
 	github.com/mackerelio/mackerel-client-go v0.27.0
@@ -63,7 +64,7 @@ require (
 	github.com/google/go-github/v55 v55.0.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/google/s2a-go v0.1.7 // indirect
-	github.com/google/uuid v1.3.1 // indirect
+	github.com/google/uuid v1.4.0 // indirect
 	github.com/googleapis/enterprise-certificate-proxy v0.3.1 // indirect
 	github.com/googleapis/gax-go/v2 v2.12.0 // indirect
 	github.com/googleapis/go-sql-spanner v1.1.1 // indirect
@@ -99,6 +100,7 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
+	github.com/robfig/cron/v3 v3.0.1 // indirect
 	github.com/rs/xid v1.5.0 // indirect
 	github.com/ryo-yamaoka/otchkiss v0.1.1 // indirect
 	github.com/samber/lo v1.38.1 // indirect
@@ -106,6 +108,7 @@ require (
 	github.com/xlab/treeprint v1.2.0 // indirect
 	github.com/xo/dburl v0.16.0 // indirect
 	go.opencensus.io v0.24.0 // indirect
+	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/ratelimit v0.3.0 // indirect
 	golang.org/x/crypto v0.14.0 // indirect
