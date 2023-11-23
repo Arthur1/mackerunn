@@ -11,12 +11,12 @@ import (
 )
 
 type Runner struct {
-	runnRunBookPath string
+	runnRunbookPath string
 }
 
-func NewRunner(runnRunBookPath string) *Runner {
+func NewRunner(runnRunbookPath string) *Runner {
 	return &Runner{
-		runnRunBookPath: runnRunBookPath,
+		runnRunbookPath: runnRunbookPath,
 	}
 }
 
@@ -29,7 +29,7 @@ type Result struct {
 
 func (r *Runner) Run(ctx context.Context) (*Result, error) {
 	opts := []runn.Option{
-		runn.Book(r.runnRunBookPath),
+		runn.Book(r.runnRunbookPath),
 	}
 	o, err := runn.New(opts...)
 	if err != nil {

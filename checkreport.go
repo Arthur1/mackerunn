@@ -18,8 +18,7 @@ func (r *Runner) exportResultAsCheckReport(result *scenariotest.Result, err erro
 
 func (r *Runner) resultToCheckReport(result *scenariotest.Result, err error) *mackerel.CheckReport {
 	report := &mackerel.CheckReport{
-		// TODO: escape & truncate
-		Name:       fmt.Sprintf("mackerunn-%s", result.Description),
+		Name:       descToReportName(result.Description),
 		OccurredAt: result.Timestamp.Unix(),
 		Source:     mackerel.NewCheckSourceHost(r.mackerelHostID),
 	}
@@ -39,4 +38,9 @@ func (r *Runner) resultToCheckReport(result *scenariotest.Result, err error) *ma
 
 func truncateReportMessage(str string) string {
 	return runewidth.Truncate(str, 1024, "...")
+}
+
+func descToReportName(desc string) string {
+	name := fmt.Sprintf("mackerunn-%s", desc)
+	return runewidth.Truncate(name, 254, "...")
 }

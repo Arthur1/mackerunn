@@ -2,9 +2,12 @@ package mackerunn
 
 import (
 	"fmt"
+	"regexp"
+	"strings"
 
 	"github.com/Arthur1/mackerunn/internal/scenariotest"
 	"github.com/mackerelio/mackerel-client-go"
+	"github.com/mattn/go-runewidth"
 )
 
 func (r *Runner) exportResultAsMetric(result *scenariotest.Result) error {
@@ -13,8 +16,7 @@ func (r *Runner) exportResultAsMetric(result *scenariotest.Result) error {
 }
 
 func (r *Runner) resultToMetricValues(result *scenariotest.Result) []*mackerel.MetricValue {
-	// TODO: escape & truncate
-	key := result.Description
+	key := descToMetricKey(result.Description)
 	t := result.Timestamp.Unix()
 	vs := []*mackerel.MetricValue{
 		{
@@ -38,4 +40,15 @@ func btoi(b bool) int64 {
 		return 1
 	}
 	return 0
+}
+
+var metricKeyRegex = regexp.MustCompile("[a-zA-Z0-9._-]+")
+
+func descToMetricKey(desc string) string {
+	tokens := metricKeyRegex.FindAllString(desc, -1)
+	if len(tokens) == 0 {
+		tokens = []string{"noname"}
+	}
+	key := strings.Join(tokens, "_")
+	return runewidth.Truncate(key, 200, "")
 }
